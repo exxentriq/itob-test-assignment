@@ -73,7 +73,7 @@
 
 Запрос
 
-```http
+```
   POST 127.0.0.1:5000/api/fillKettle?water_level=0.5&water_temperature=20.0
 ```
 
