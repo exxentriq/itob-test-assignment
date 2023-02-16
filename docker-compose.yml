@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  kettle:
+    build: ./kettle
+    env_file:
+      ./kettle/.env
+    volumes:
+      - ./data:/app/data
