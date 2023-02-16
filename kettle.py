@@ -162,6 +162,3 @@ class KettleThread(threading.Thread):
                 datetime.datetime.timestamp(datetime.datetime.now(datetime.timezone.utc).replace(microsecond=0))
             )
             self.kettle.db.insert_data(data)
-
-
-# kettle = Kettle(water_level=0.5, water_temperature=20.0) # Half full with normal room temperature water
