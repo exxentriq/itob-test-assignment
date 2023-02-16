@@ -2,6 +2,11 @@ import os
 import sqlite3
 from datetime import date
 
+from dotenv import load_dotenv
+
+
+load_dotenv() # Take environment variables from .env
+
 DATABASE = os.getenv("SQLITE3_DATABASE")
 
 
@@ -9,6 +14,7 @@ class Database:
     def __init__(self):
         """Creates database structure if it does not exist"""
 
+        print(DATABASE)
         con = sqlite3.connect(DATABASE)
         cur = con.cursor()
 

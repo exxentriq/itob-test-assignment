@@ -5,6 +5,11 @@ import datetime
 
 from database import Database
 
+from dotenv import load_dotenv
+
+
+load_dotenv() # Take environment variables from .env
+
 
 def clamp(value, min_value, max_value):
     if value < min_value:
@@ -29,10 +34,10 @@ class Kettle:
     # TODO: More advanced formula based on current water level and water/environment temperature can be used
     DPS = WATER_BOILING_TEMPERATURE / WATER_BOILING_TIME
 
-    def __init__(self, water_level, water_temperature):
+    def __init__(self):
         self.state = Kettle.STATE_OFF
-        self.water_level = clamp(water_level, 0.0, Kettle.WATER_MAX_LEVEL)  # Clamp to prevent water overflowing
-        self.water_temperature = water_temperature
+        self.water_level = None
+        self.water_temperature = None
         self.thread = None
         self.db = Database()
 
@@ -110,6 +115,12 @@ class Kettle:
             datetime.datetime.timestamp(datetime.datetime.now(datetime.timezone.utc).replace(microsecond=0))
         )
         self.db.insert_data(data)
+
+    def set_water_level(self, water_level):
+        self.water_level = clamp(water_level, 0.0, Kettle.WATER_MAX_LEVEL)  # Clamp to prevent water overflowing
+
+    def set_water_temperature(self, water_temperature):
+        self.water_temperature = water_temperature
 
 
 class KettleThread(threading.Thread):
