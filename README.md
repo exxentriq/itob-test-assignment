@@ -86,6 +86,27 @@
 
 Ответ сервера
 
-```html
-<p>The kettle water level has been set to 0.5 and water temperature to 20.0</p>
+```json
+{
+    "message": "The kettle water level has been set to 0.5 and water temperature to 20.0."
+}
+```
+
+Запрос
+
+```
+  GET 127.0.0.1:5000/api/getLastDatabaseRecord
+```
+
+Ответ сервера
+
+```json
+{
+    "id": 64,
+    "kettle_state": "ON",
+    "message": "TEMPERATURE: Water temperature is 70.0°C.",
+    "time": 1676634660,
+    "water_level_liters": 0.5,
+    "water_temperature_celsius": 70.0
+}
 ```
