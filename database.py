@@ -68,3 +68,27 @@ class Database:
         con.close()
         
         return records_list
+
+    def read_last_record(self):
+        """Reads last database record"""
+
+        con = sqlite3.connect(DATABASE)
+        cur = con.cursor()
+
+        last_row = cur.execute(f"""
+            SELECT id, kettle_state, water_level_liters, water_temperature_celsius, message, time
+            FROM kettle_records ORDER BY id DESC LIMIT 1
+        """).fetchone()
+        
+        last_record = {
+            "id": last_row[0],
+            "kettle_state": last_row[1],
+            "water_level_liters": last_row[2],
+            "water_temperature_celsius": last_row[3],
+            "message": last_row[4],
+            "time": last_row[5]
+        }
+
+        con.close()
+        
+        return last_record

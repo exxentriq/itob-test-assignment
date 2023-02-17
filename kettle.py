@@ -36,8 +36,8 @@ class Kettle:
 
     def __init__(self):
         self.state = Kettle.STATE_OFF
-        self.water_level = None
-        self.water_temperature = None
+        self.water_level = 0.0
+        self.water_temperature = 0.0
         self.thread = None
         self.db = Database()
 
