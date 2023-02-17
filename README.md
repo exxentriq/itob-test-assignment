@@ -69,6 +69,13 @@
 ```
   GET /api/getKettleInfo
 ```
+
+#### Получить все записи из базы данных
+
+```
+  GET /api/getLastDatabaseRecord
+```
+
 ## Пример использования
 
 Запрос
