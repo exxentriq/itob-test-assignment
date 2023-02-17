@@ -70,7 +70,7 @@
   GET /api/getKettleInfo
 ```
 
-#### Получить все записи из базы данных
+#### Получить последнюю запись из базы данных
 
 ```
   GET /api/getLastDatabaseRecord
